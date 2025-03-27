@@ -1,0 +1,33 @@
+﻿@using WebAppMVCLCT.Models
+@model ValuesModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>x</td>
+            <td>
+                <input type="number" asp-for="x" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>y</td>
+            <td>
+                <input type="number" asp-for="y" />
+            </td>
+        </tr>
+
+        <tr>
+          
+            <td>
+                <input type="submit" value="submit" name="submit" />
+                @TempData["res"]
+            </td>
+        </tr>
+    </table>
+</form>
