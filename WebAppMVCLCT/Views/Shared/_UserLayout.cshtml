@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    @* Header *@
+
+    <table style="width:100%;background-color:lightblue;text-align:center;border-style:solid;border-radius:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        <tr>
+            <th>Welcome To Web App Development</th>
+        </tr>
+    </table>
+
+    <table style="width:100%;background-color:antiquewhite;text-align:center;border-style:solid;border-radius:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        <tr>
+            <td>@Html.ActionLink("Home", "HomePage", "Users")</td>
+            <td>@Html.ActionLink("Get User Info", "GettingUserInfo", "MoreExamples")</td>
+            <td>@Html.ActionLink("Example", "Example", "MoreExamples")</td>
+          
+            <td>@Html.ActionLink("Other Examples", "", "")</td>
+            <td>@Html.ActionLink("logout", "Login", "Users")</td>
+        </tr>
+    </table>
+    <div style="border-style:solid;margin:20px;padding:20px">
+        @RenderBody()
+        @* body which chnages with every page *@
+    </div>
+
+    @* footer *@
+
+    <table style="width:100%;background-color:gray;text-align:center;border-style:solid;border-radius:20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        <tr>
+            <th>copy rights 2025</th>
+        </tr>
+    </table>
+
+</body>
+</html>

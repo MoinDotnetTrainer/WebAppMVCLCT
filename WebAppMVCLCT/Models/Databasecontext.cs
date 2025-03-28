@@ -14,5 +14,7 @@ namespace WebAppMVCLCT.Models
         }    
 
         public DbSet<UsersModel> UsersModel { get; set; }
+
+       
     }
 }

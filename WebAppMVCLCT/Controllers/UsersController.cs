@@ -26,7 +26,7 @@ namespace WebAppMVCLCT.Controllers
             // insert logic obj will be trabsfed to db
             _context.UsersModel.Add(obj);
             _context.SaveChanges();
-            return RedirectToAction("UsersList");
+            return RedirectToAction("Login");
         }
 
 
@@ -58,11 +58,40 @@ namespace WebAppMVCLCT.Controllers
         public IActionResult DeleteUser(int ID)
         {
             var res = _context.UsersModel.Find(ID);
-            if (res != null) {
+            if (res != null)
+            {
                 _context.UsersModel.Remove(res);
                 _context.SaveChanges();
             }
             return RedirectToAction("UsersList");
+        }
+
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Login(UsersModel obj)
+        {
+            var res = _context.UsersModel.Any(x => x.Email == obj.Email && x.Password == obj.Password);
+            if (res)
+            {
+                return RedirectToAction("HomePage");
+            }
+            else
+            {
+                TempData["res"] = "Email or Password is Not Correct!";
+            }
+            return View();
+        }
+
+        public IActionResult HomePage()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿   @model IEnumerable<WebAppMVCLCT.Models.UsersModel>
+@{
+    ViewData["Title"] = "GettingUserInfo";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>GettingUserInfo</h1>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Dob</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Password</td>
+                <td>@item.Dob</td>
+                <td>@item.Salary</td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateUser", "Users", new { ID = item.ID })|
+                    @Html.ActionLink("Delete", "DeleteUser", "Users", new { ID = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+}
