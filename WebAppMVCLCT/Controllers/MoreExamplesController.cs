@@ -23,5 +23,38 @@ namespace WebAppMVCLCT.Controllers
         
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult InsertDataWithValidations()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult InsertDataWithValidations(ValidateModel obj)
+        {
+            _context.validateModels.Add(obj);
+            _context.SaveChanges();
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult AddStudents()
+        {
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult AddStudents(Student obj)
+        {
+            _context.students.Add(obj);
+            _context.SaveChanges();
+            return View();
+        }
     }
 }
