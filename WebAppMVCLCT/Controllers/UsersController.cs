@@ -27,6 +27,8 @@ namespace WebAppMVCLCT.Controllers
             _context.UsersModel.Add(obj);
             _context.SaveChanges();
             return RedirectToAction("Login");
+
+            // code first approach , forget about database (Migrations)
         }
 
 
@@ -34,7 +36,7 @@ namespace WebAppMVCLCT.Controllers
         public IActionResult UsersList()
         {
             IList<UsersModel> obj;
-            obj = (from s in _context.UsersModel select s).ToList();
+            obj = (from s in _context.UsersModel select s).ToList();  // EF also supports LINQ
             return View(obj);
         }
 

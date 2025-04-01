@@ -56,5 +56,21 @@ namespace WebAppMVCLCT.Controllers
             _context.SaveChanges();
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Validate()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Validate(ValidateModel obj)
+        {
+            _context.validateModels.Add(obj);
+            _context.SaveChanges();
+            return View();
+        }
+
     }
 }

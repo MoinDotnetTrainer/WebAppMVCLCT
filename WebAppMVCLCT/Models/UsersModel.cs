@@ -10,6 +10,7 @@ namespace WebAppMVCLCT.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime Dob { get; set; }
-        public double Salary { get; set; }
+        public int Salary { get; set; }
+        public string? Address { get; set; }
     }
 }

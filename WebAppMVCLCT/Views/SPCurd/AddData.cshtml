@@ -1,0 +1,43 @@
+﻿@using WebAppMVCLCT.Models
+@model UsersModel
+@{
+    ViewData["Title"] = "AddData";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>AddData</h1>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <th>Name</th>
+            <td><input type="text" asp-for="Name" /></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="email" asp-for="Email" /></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input type="password" asp-for="Password" /></td>
+        </tr>
+        <tr>
+            <th>Dob</th>
+            <td><input type="datetime-local" asp-for="Dob" /></td>
+        </tr>
+        <tr>
+            <th>Sal</th>
+            <td><input type="number" asp-for="Salary" /></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td><input type="text" asp-for="Address" /></td>
+        </tr>
+       
+        <tr>
+            <td>
+                <input type="submit" value="submit" name="submit" />
+            </td>
+        </tr>
+    </table>
+}
