@@ -1,0 +1,36 @@
+﻿@using WebAppMVCLCT.Models
+@model ProductsModel
+@{
+    ViewData["Title"] = "AddProducts";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>AddProducts</h1>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <th>PName</th>
+            <td><input type="text" asp-for="PName" /></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td><input type="text" asp-for="Category" /></td>
+        </tr>
+        <tr>
+            <th>Qty</th>
+            <td><input type="number" asp-for="Qty" /></td>
+        </tr>
+        <tr>
+            <th>Expiry Date</th>
+            <td><input type="datetime-local" asp-for="ExpiryDate" /></td>
+        </tr>
+      
+        <tr>
+            <td>
+                <input type="submit" value="submit" name="submit" />
+            </td>
+        </tr>
+    </table>
+}

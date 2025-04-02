@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebAppMVCLCT.Models;
+using WebAppMVCLCT.Service;
 
 namespace WebAppMVCLCT
 {
@@ -21,6 +22,11 @@ namespace WebAppMVCLCT
                 options.UseSqlServer(con);
             });
 
+
+
+            builder.Services.AddScoped<IOrdersInterface,IOrderClass>();
+
+            // service should be ibjected
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

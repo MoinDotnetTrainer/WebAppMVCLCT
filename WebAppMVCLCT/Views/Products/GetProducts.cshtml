@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebAppMVCLCT.Models.ProductsModel>
+
+@{
+    ViewData["Title"] = "GetProducts";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>GetProducts</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "UpdateProducts", "Products", new { ProductId = item.ProductId })|
+                    @Html.ActionLink("Delete", "DeleteProducts", "Products", new { ProductId = item.ProductId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
