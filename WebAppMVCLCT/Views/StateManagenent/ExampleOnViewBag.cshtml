@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "ExampleOnViewBag";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>ExampleOnViewBag</h1>
+
+@* @foreach (var item in ViewData["results"] as List<WebAppMVCLCT.Controllers.Test>) *@
+@foreach (var item in TempData["res"] as List<WebAppMVCLCT.Controllers.Test>)
+@* @foreach (var item in ViewBag.result) *@
+{
+<ol>
+    <li>
+        @item.Name
+    </li>
+</ol>
+}

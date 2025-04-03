@@ -74,7 +74,7 @@ namespace WebAppMVCLCT.Controllers
         {
             return View();
         }
-
+ 
 
         [HttpPost]
         public IActionResult Login(UsersModel obj)
@@ -82,6 +82,11 @@ namespace WebAppMVCLCT.Controllers
             var res = _context.UsersModel.Any(x => x.Email == obj.Email && x.Password == obj.Password);
             if (res)
             {
+                var name = _context.UsersModel.Where(x => x.Email == obj.Email).Select(x => x.Name).FirstOrDefault();
+
+                HttpContext.Session.SetString("LoginTime", System.DateTime.Now.ToLocalTime().ToString());
+
+                HttpContext.Session.SetString("LoginName",name); 
                 return RedirectToAction("HomePage");
             }
             else
@@ -95,5 +100,11 @@ namespace WebAppMVCLCT.Controllers
         {
             return View();
         }
+        public IActionResult logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
     }
 }

@@ -26,6 +26,18 @@ namespace WebAppMVCLCT
 
             builder.Services.AddScoped<IOrdersInterface,IOrderClass>();
 
+
+            //sesssion
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
+                options.Cookie.IsEssential = true;
+            });
+
+            builder.Services.AddHttpContextAccessor();
+
+
             // service should be ibjected
             var app = builder.Build();
 
@@ -39,14 +51,14 @@ namespace WebAppMVCLCT
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Users}/{action=Login}/{id?}");
 
             app.Run();
         }

@@ -3,6 +3,7 @@ using WebAppMVCLCT.Models;
 
 namespace WebAppMVCLCT.Controllers
 {
+    [SetSessionGlobally]
     public class MoreExamplesController : Controller
     {
         public readonly Databasecontext _context;

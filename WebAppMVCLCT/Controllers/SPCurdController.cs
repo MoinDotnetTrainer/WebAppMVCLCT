@@ -12,7 +12,10 @@ namespace WebAppMVCLCT.Controllers
         {
             _context = context;
         }
+        [SetSessionGlobally]
+
         [HttpGet]
+       
         public IActionResult AddData()
         {
             return View();
@@ -41,6 +44,8 @@ namespace WebAppMVCLCT.Controllers
             return View();
         }
 
+
+        [SetSessionGlobally]
         public IActionResult GetData()
         {
             string sql = "exec Sp_GetData";
@@ -50,7 +55,10 @@ namespace WebAppMVCLCT.Controllers
         }
 
 
+        [SetSessionGlobally]
         [HttpGet]
+
+       
         public IActionResult UpdateData(int ID)
         {
             UsersModel obj;

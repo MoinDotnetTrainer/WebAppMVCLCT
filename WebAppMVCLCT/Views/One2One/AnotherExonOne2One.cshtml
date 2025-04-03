@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebAppMVCLCT.Models.Person>
+
+@{
+    ViewData["Title"] = "AnotherExonOne2One";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>AnotherExonOne2One</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>@item.Name</td>
+                <td>@item.PersonDetail?.Address</td>
+                <td>@item.PersonDetail?.PhoneNumber</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

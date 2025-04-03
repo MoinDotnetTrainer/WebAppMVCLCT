@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppMVCLCT.Models;
 
@@ -11,9 +12,11 @@ using WebAppMVCLCT.Models;
 namespace WebAppMVCLCT.Migrations
 {
     [DbContext(typeof(Databasecontext))]
-    partial class DatabasecontextModelSnapshot : ModelSnapshot
+    [Migration("20250403042233_anotherexonone2one")]
+    partial class anotherexonone2one
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,46 +270,6 @@ namespace WebAppMVCLCT.Migrations
                     b.ToTable("GeninueData");
                 });
 
-            modelBuilder.Entity("WebAppMVCLCT.Models.Villa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Villa");
-                });
-
-            modelBuilder.Entity("WebAppMVCLCT.Models.VillaAmentity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VillaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VillaId");
-
-                    b.ToTable("VillaAmentity");
-                });
-
             modelBuilder.Entity("WebAppMVCLCT.Models.PatientAddress", b =>
                 {
                     b.HasOne("WebAppMVCLCT.Models.Patient", null)
@@ -327,17 +290,6 @@ namespace WebAppMVCLCT.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("WebAppMVCLCT.Models.VillaAmentity", b =>
-                {
-                    b.HasOne("WebAppMVCLCT.Models.Villa", "Villa")
-                        .WithMany("villaAmentities")
-                        .HasForeignKey("VillaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Villa");
-                });
-
             modelBuilder.Entity("WebAppMVCLCT.Models.Patient", b =>
                 {
                     b.Navigation("PatientAddress");
@@ -347,11 +299,6 @@ namespace WebAppMVCLCT.Migrations
                 {
                     b.Navigation("PersonDetail")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WebAppMVCLCT.Models.Villa", b =>
-                {
-                    b.Navigation("villaAmentities");
                 });
 #pragma warning restore 612, 618
         }
